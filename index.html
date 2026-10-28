@@ -1,153 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ARYZ MODZ - V5.1 FINAL FIX 20MB LOOK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;color:#fff;font-family:monospace;background:#000}
-.wrap{width:520px;max-width:94vw}
-.vid{width:100%;border:2px solid #fff;box-shadow:0 0 15px #fff;border-radius:20px;overflow:hidden;background:#000;position:relative}
-.vid video{width:100%;display:block}
-.skip{position:absolute;top:10px;right:10px;z-index:999;background:red;border:1px solid #fff;color:#fff;padding:8px 15px;border-radius:20px;font-size:12px}
-.box{border:1px solid #fff;border-radius:12px;padding:18px;text-align:center;margin-top:14px;background:#0a0a0a}
-.pw{width:90%;height:45px;background:#111;border:1px solid #fff;border-radius:8px;color:#fff;text-align:center}
-#kucingLock{position:fixed;inset:0;z-index:30000;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px}
-#kucingLock .cardK{width:520px;max-width:94vw;border:2px solid #fff;box-shadow:0 0 20px #fff;border-radius:16px;padding:20px;text-align:center;background:#0a0a0a}
-#kucingLock img{width:200px;border-radius:20px;border:2px solid #fff;box-shadow:0 0 15px #fff;animation:glow 2s infinite}
-@keyframes glow{0%{box-shadow:0 0 10px #fff}50%{box-shadow:0 0 25px #00ff88}100%{box-shadow:0 0 10px #fff}}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08);box-shadow:0 0 35px #00ff88}100%{transform:scale(1)}}
-#gebi{display:none;position:fixed;inset:0;z-index:9999;background:#000;flex-direction:column;justify-content:center;align-items:center}
-#gebi video{width:92%;max-width:550px;border:3px solid #fff;border-radius:20px}
-#bugPage{display:none;position:fixed;inset:0;z-index:10000;background:#070707;overflow-y:auto;padding:20px}
-.card{width:520px;max-width:94vw;border:1px solid #fff;box-shadow:0 0 15px #0af;border-radius:16px;padding:18px;background:#0f0f0f;margin:0 auto}
-.inp{width:100%;height:48px;background:#111;border:1px solid #fff;border-radius:10px;color:#fff;text-align:center;font-size:16px;box-sizing:border-box}
-.swipe{margin-top:14px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:15px;padding:10px;scroll-behavior:smooth}
-.swipe::-webkit-scrollbar{display:none}
-.opt{min-width:88%;scroll-snap-align:center;border:2px solid #00ff88;border-radius:18px;padding:18px;background:#111;flex-shrink:0;transition:0.3s}
-.opt.active{box-shadow:0 0 20px #00ff88;background:#0a1a0a;border-color:#fff;transform:scale(1.03)}
-.finger{width:110px;height:110px;border-radius:50%;background:#111;border:4px solid #00ff88;margin:20px auto;display:flex;align-items:center;justify-content:center;font-size:50px;box-shadow:0 0 25px #00ff88;user-select:none;animation:pulse 1.2s infinite;cursor:pointer}
-.finger:active{transform:scale(0.9)}
-#log{margin-top:14px;background:#000;border:1px dashed #444;border-radius:10px;padding:12px;height:120px;overflow:auto;font-size:11px;opacity:0.9}
-.sukses{color:lime}.loading{color:#0af}
-#login{display:none}
-.hint{font-size:11px;opacity:0.7;text-align:center;margin:8px;color:#00ff88}
-.dots{text-align:center}.dots span{width:10px;height:10px;background:#333;border-radius:50%;display:inline-block;margin:0 4px;transition:0.3s}.dots span.on{background:#00ff88;box-shadow:0 0 8px #00ff88}
+body { background:#ffe6f2; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; overflow:hidden; font-family:sans-serif; flex-direction:column; }
+.cat { font-size:100px; animation: joget 0.5s infinite alternate; }
+@keyframes joget {
+  0% { transform: translateY(0) rotate(-10deg) scale(1); }
+  100% { transform: translateY(-20px) rotate(10deg) scale(1.1); }
+}
+h1 { color:#ff3399; animation: warna 1s infinite; }
+@keyframes warna {
+  0% { color:#ff3399; } 50% { color:#ffcc00; } 100% { color:#ff3399; }
+}
+.hearts { position:absolute; width:100%; height:100%; pointer-events:none; }
+.heart { position:absolute; animation: jatuh 3s linear infinite; font-size:30px; }
+@keyframes jatuh {
+  0% { top:-10%; } 100% { top:110%; }
+}
 </style>
 </head>
 <body>
+<h1>KUCING JOGET BUAT SYNG KUH! 😍</h1>
+<div class="cat">🐱💃</div>
+<p>Klik kucingnya syng!</p>
+<div class="hearts" id="hearts"></div>
 
-<div id="kucingLock">
-<div class="cardK">
-<img src="https://i.pinimg.com/originals/f8/66/8e/f8668e5327cfb6a8fb6b0a8e8254d7dbf.gif">
-<h2>🔒 KUCING LOCK</h2>
-<p style="opacity:0.6;font-size:11px">Masukan sandi untuk buka localhost:8080/kucing.html</p>
-<input id="pwKucing" class="pw" type="password" placeholder="SANDI KUCING..." style="margin-top:10px">
-<br><br>
-<button style="width:90%;height:50px;background:#fff;color:#000;border:none;border-radius:12px;font-weight:bold" onclick="BUKA_KUCING()">BUKA KUNCI</button>
-<p id="errK" style="display:none;color:red;margin-top:12px">SANDI SALAH SYNG! 😈</p>
-</div>
-</div>
-
-<div class="wrap" id="login">
-<div class="vid"><button class="skip" onclick="HAPUS_SEMUA()">SKIP >></button><video src="vidio.mp4" autoplay loop muted playsinline></video></div>
-<div class="box"><h1>ARYZ MODZ</h1><input id="pwInput" class="pw" placeholder="ARYZ MODZ"><br><br><button style="width:90%;height:40px;background:#212121;color:#fff;border:1px solid #fff;border-radius:8px" onclick="LOGIN()">LOGIN</button><p id="salah" style="display:none;color:red">PW SALAH!</p></div>
-</div>
-
-<div id="gebi"><div style="position:relative;width:92%;max-width:550px"><button class="skip" onclick="HAPUS_SEMUA()">SKIP >></button><video src="vidio.mp4" autoplay loop muted playsinline></video></div><h2 style="margin-top:12px">ARYZ MODZ LOCK</h2></div>
-
-<div id="bugPage">
-<div class="card">
-<h2 style="text-align:center;letter-spacing:3px;margin:0">ARYZ MODZ V5.1</h2>
-<p style="text-align:center;opacity:0.5;font-size:10px">*SIMULATOR UI ONLY - TIDAK MENGIRIM APA-APA* - 20MB LOOK</p>
-<input id="nomor" class="inp" placeholder="628xxxxxxxxx">
-<p class="hint">← WAJIB GESER KESAMPING UNTUK PILIH BUG →</p>
-<div class="swipe" id="swipeMenu">
-  <div class="opt active" data-type="BAND"><b>⚠️ BAND BUG</b><br><small>Geser kanan untuk GB -></small><br><br>🔥 Invisible + Delay UI<br><small>20MB Pack</small></div>
-  <div class="opt" data-type="GB"><b>💣 GB BUG</b><br><small><- BAND | BLANK -></small><br><br>💥 Forclose Simulator<br><small>20MB Pack</small></div>
-  <div class="opt" data-type="BLANK"><b>👁️ BLANK BUG</b><br><small><- Geser kiri untuk GB</small><br><br>👻 Blank Chat UI<br><small>20MB Pack</small></div>
-</div>
-<div class="dots" id="dots"><span class="on"></span><span></span><span></span></div>
-
-<div style="text-align:center">
-<p style="font-size:12px;margin:15px 0 0;font-weight:bold">TAHAN SIDIK JARI UNTUK KIRIM</p>
-<div class="finger" id="finger">👆</div>
-<p id="status" style="font-size:11px;color:#00ff88">Mode: BAND - Tahan sidik jari 2 detik</p>
-</div>
-<div id="log">[SYSTEM] Siap... (Fake Only Syng Kuhh 20MB ✔️)</div>
-</div>
-</div>
-
-<audio id="musik" src="music.mp3" loop></audio>
 <script>
-let selectedType="BAND";
-const opts=document.querySelectorAll('.opt');
-const dots=document.querySelectorAll('#dots span');
-const swipe=document.getElementById('swipeMenu');
-
-function updateActive(index){
- opts.forEach(x=>x.classList.remove('active'));
- opts[index].classList.add('active');
- dots.forEach(d=>d.classList.remove('on'));
- dots[index].classList.add('on');
- selectedType=opts[index].dataset.type;
- document.getElementById('status').innerText="Mode: "+selectedType+" - Tahan sidik jari";
-}
-opts.forEach((o,i)=>{
- o.addEventListener('click',()=>{updateActive(i); o.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
-});
-swipe.addEventListener('scroll',()=>{
- let idx=Math.round(swipe.scrollLeft / (opts[0].offsetWidth+15));
- if(idx>=0&&idx<opts.length) updateActive(idx);
-});
-
-function BUKA_KUCING(){
- let s=document.getElementById('pwKucing').value.trim().toUpperCase();
- if(s=="123"||s=="ARYZ"||s=="KUCING"||s=="ARYZ MODZ"){
-  document.getElementById('kucingLock').style.display='none';
-  document.getElementById('login').style.display='block';
- } else {document.getElementById('errK').style.display='block';}
-}
-function LOGIN(){
- if(document.getElementById('pwInput').value.trim().toUpperCase()=="ARYZ MODZ"){
-  document.getElementById('login').style.display='none';
-  document.getElementById('gebi').style.display='flex';
-  document.getElementById('musik').play().catch(()=>{});
- } else {document.getElementById('salah').style.display='block';}
-}
-function HAPUS_SEMUA(){
- document.querySelectorAll('audio, video').forEach(function(el){el.pause();el.currentTime=0;el.muted=true;el.src="";el.remove();});
- document.getElementById('login').style.display='none';
- document.getElementById('gebi').style.display='none';
- document.getElementById('kucingLock').style.display='none';
- document.getElementById('bugPage').style.display='block';
-}
-
-let holdTimer=null;
-const finger=document.getElementById('finger');
-function startHold(e){e.preventDefault(); document.getElementById('status').innerText="🔒 Scan sidik jari... tahan..."; holdTimer=setTimeout(()=>{jalankan()},1200);}
-function cancelHold(){clearTimeout(holdTimer);}
-
-finger.addEventListener('touchstart',startHold,{passive:false});
-finger.addEventListener('touchend',cancelHold);
-finger.addEventListener('mousedown',startHold);
-finger.addEventListener('mouseup',cancelHold);
-
-function jalankan(){
- let no=document.getElementById('nomor').value||"628xxxx";
- let log=document.getElementById('log');
- let st=document.getElementById('status');
- st.innerText="📡 Mengirim "+selectedType+" (FAKE 20MB)...";
- log.innerHTML=`<span class=loading>> Menghubungkan ke ${no}...</span><br>> Mode ${selectedType} dipilih...<br>> Size: 20.00 MB (simulasi)`;
- if(navigator.vibrate) navigator.vibrate([100,50,100]);
- setTimeout(()=>{log.innerHTML+=`<br>> Injecting fake animation 20MB...`;log.scrollTop=log.scrollHeight;},800);
- setTimeout(()=>{
-  log.innerHTML+=`<br><span class=sukses>> [${selectedType}] SUKSES TERKIRIM 20MB! (SIMULASI)</span><br>> Tidak ada pesan asli yang dikirim syng kuhh ✔️`;
-  st.innerText=`✅ Sukses 20MB (SIMULASI) - ${selectedType}`;
-  log.scrollTop=log.scrollHeight;
-  if(navigator.vibrate) navigator.vibrate(200);
- },2000);
+document.querySelector('.cat').onclick = function(){
+  this.style.animation = 'joget 0.1s infinite alternate';
+  for(let i=0;i<20;i++){
+    let h = document.createElement('div');
+    h.className='heart'; h.innerHTML='❤️';
+    h.style.left=Math.random()*100+'%';
+    h.style.animationDelay=Math.random()+'s';
+    document.getElementById('hearts').appendChild(h);
+    setTimeout(()=>h.remove(),3000);
+  }
+  setTimeout(()=>{ this.style.animation='joget 0.5s infinite alternate'; },2000);
 }
 </script>
 </body>
-  </html>
-  
+</html>
